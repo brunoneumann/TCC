@@ -1,0 +1,44 @@
+<template name="app">
+    <div class="container margin-top-40">
+        <div class="flow-text grey-text text-darken-2">{{status}}</div>
+        <p class="grey-text text-darken-1">
+            {{label}}
+        </p>
+        <p class="grey-text text-darken-1">
+            {{processingImage}}
+        </p>
+
+        <div id="containerImages" class="horizontal-scroll">
+        </div>
+
+        <p class="margin-top-20">
+            <a id="btnStartTraining" class="btn btn-large waves-effect waves-light hide">Start Training</a>
+        </p>
+
+        <p class="margin-top-20">
+            <div id="containerImageToPredict">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>Upload image</span>
+                        <input id="fileUploaded" type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+                <p class="center">
+                    <img id="imageToPredict" style="width: 100%; height: auto;">
+                </p>
+                <p>
+                    <a id="btnStartPredict" class="btn btn-large waves-effect waves-light" style="width: 100%">Crop and Classify</a>
+                </p>
+                <p>
+                    <span id="disease" class="flow-text"></span>
+                </p>    
+
+            </div>
+
+            <div style="height: 300px"></div>
+        </p>
+    </div>
+</template>

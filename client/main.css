@@ -1,0 +1,22 @@
+body {
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.margin-top-40 {
+  margin-top: 40px;
+}
+
+.margin-right-5 {
+  margin-right: 5px;
+}
+
+.horizontal-scroll {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}

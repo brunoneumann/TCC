@@ -15,8 +15,20 @@ body {
   margin-right: 5px;
 }
 
+.padding-top-20 {
+  padding-top: 20px !important;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 .horizontal-scroll {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
+}
+
+.table-classify tr:first-child td {
+  font-size: 20px;
 }

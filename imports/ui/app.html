@@ -11,15 +11,20 @@
         <div id="containerImages" class="horizontal-scroll">
         </div>
 
-        <p class="margin-top-20">
-            <a id="btnStartTraining" class="btn btn-large waves-effect waves-light hide">Start Training</a>
-        </p>
+        <div id="trainingPanel" class="row margin-top-20">
+            <div class="col s6">
+                <a id="btnStartTraining" class="btn btn-large waves-effect waves-light hide">Iniciar treinamento</a>
+            </div>
+            <div class="col s6 padding-top-20">
+                <span id="labelErrorTax" class="grey-text text-darken-1"></span>
+            </div>
+        </div>
 
         <p class="margin-top-20">
-            <div id="containerImageToPredict">
+            <div id="containerImageToPredict" class="hide">
                 <div class="file-field input-field">
                     <div class="btn">
-                        <span>Upload image</span>
+                        <span>Upload imagem</span>
                         <input id="fileUploaded" type="file">
                     </div>
                     <div class="file-path-wrapper">
@@ -30,11 +35,27 @@
                     <img id="imageToPredict" style="width: 100%; height: auto;">
                 </p>
                 <p>
-                    <a id="btnStartPredict" class="btn btn-large waves-effect waves-light" style="width: 100%">Crop and Classify</a>
+                    <a id="btnStartPredict" class="btn btn-large waves-effect waves-light" style="width: 100%"
+                        disabled>Cortar e classificar</a>
                 </p>
                 <p>
-                    <span id="disease" class="flow-text"></span>
-                </p>    
+                    <table id="tableDiseases" class="highlight table-classify hide">
+                        <thead>
+                            <tr>
+                                <th class="flow-text bold">Doença</th>
+                                <th class="flow-text bold">Confiança</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each results}}
+                            <tr>
+                                <td>{{this.label}}</td>
+                                <td>{{this.confidence}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </p>
 
             </div>
 

@@ -17,7 +17,7 @@ export default class networkController {
             featureExtractor = ml5.featureExtractor('MobileNet', options, modelLoaded);
 
             function modelLoaded() {
-                instance.state.set('status', 'Model loaded');
+                instance.state.set('status', 'Model carregado!');
 
                 setTimeout(() => {
                     // Starting featureExtractor method for classification
@@ -53,14 +53,14 @@ export default class networkController {
                 // Wait for image load
                 imageElement.onload = () => {
                     classifier.addImage(imageElement, label, () => {
-                        instance.state.set('processingImage', `Adding image ${index + 1}: ${image}`);
+                        instance.state.set('processingImage', `Adicionando imagem ${index + 1}: ${image}`);
                         index++;
                         setTimeout(() => { addImage() }, 10);
                     });
                 };
             } else {
-                instance.state.set('status', 'Images added!');
-                instance.state.set('label', `${images.length} images to train..`);
+                instance.state.set('status', 'Imagens adicionadas!');
+                instance.state.set('label', `${images.length} imagens para treinar..`);
                 $("#btnStartTraining").removeClass("hide");
             }
         };
@@ -68,23 +68,37 @@ export default class networkController {
         addImage();
     };
 
-    startTraining() {
+    startTraining(instance) {
         classifier.train(function (lossValue) {
             if (lossValue == null) {
-                console.log('Training Complete');
+                instance.state.set('status', 'Treinamento completo!');
+                instance.state.set('label', 'Escolha uma imagem para classificar');
+                instance.state.set('processingImage', '');
+                $("#labelErrorTax").text("");
                 $("#containerImageToPredict").removeClass("hide");
+                $("#trainingPanel").addClass("hide");
             } else {
-                console.log(lossValue);
+                $("#labelErrorTax").text("Valor de perda: "+lossValue);
             }
         });
     };
 
 
-    classify() {
+    classify(instance) {
         let image = document.getElementById('imageToPredict');
         classifier.classify(image, (err, results) => {
+            let array = [];
+            results.forEach((element, index) => {
+                array.push({
+                    label: element.label,
+                    confidence: `${element.confidence * 100} %`
+                });
+
+                if(index===(results.length-1)) {
+                    instance.state.set('results', array);
+                }
+            });
             console.log(results);
-            $("#disease").text(results);
         });
     };
 

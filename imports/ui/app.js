@@ -70,7 +70,7 @@ Template.app.onRendered(function () {
 
 Template.app.onCreated(function () {
     this.state = new ReactiveDict();
-    this.state.set('status', 'Loading MobileNet..');
+    this.state.set('status', 'Iniciando MobileNet..');
 
     let self = this;
 
@@ -92,12 +92,15 @@ Template.app.helpers({
     'processingImage': function () {
         return Template.instance().state.get('processingImage');
     },
+    'results': function() {
+        return Template.instance().state.get('results');
+    }
 });
 
 Template.app.events({
 
     'click [id=btnStartTraining]': function (e, tmpl) {
-        networkController.prototype.startTraining();
+        networkController.prototype.startTraining(tmpl);
     },
 
     'change [id=fileUploaded]': function (e, tmpl) {
@@ -113,13 +116,7 @@ Template.app.events({
                 $('#imageToPredict').attr('src', evt.target.result);
                 $('#imageToPredict').css("width", "100%").css("height", "auto");
 
-                //$("#btnStartPredict").removeClass("hide");
-
                 setTimeout(() => {
-                    //networkController.prototype.classify();
-
-
-                    //setTimeout(function () {
                     $('#imageToPredict').cropper({
                         aspectRatio: 120 / 120,
                         dragMode: 'move',
@@ -134,8 +131,8 @@ Template.app.events({
                         movable: false,
                         zoomable: true
                     });
-                    //}, 1000);
 
+                    $("#btnStartPredict").attr("disabled", false);
                 }, 2000);
             };
 
@@ -159,8 +156,10 @@ Template.app.events({
             $('#imageToPredict').attr('src', dataImage);
             $('#imageToPredict').css("width", "120").css("height", "120");
 
+            $("#tableDiseases").removeClass("hide");
+
             setTimeout(() => {
-                networkController.prototype.classify();
+                networkController.prototype.classify(tmpl);
             },500);
         }, 800);
     },

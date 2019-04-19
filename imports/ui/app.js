@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import networkController from './networkController.js';
 import './app.html'
+import '../../lib/constants.js';
 
 Template.app.onRendered(function () {
 
@@ -76,7 +77,7 @@ Template.app.onCreated(function () {
     Meteor.call("listDataToTraining", (err, images) => {
         arrayImages = images;
 
-        //networkController.prototype.initMl5(images, self);
+        networkController.prototype.initMl5(images, self);
     });
 
 });
@@ -157,8 +158,11 @@ Template.app.events({
         setTimeout(() => {
             $('#imageToPredict').attr('src', dataImage);
             $('#imageToPredict').css("width", "120").css("height", "120");
+
+            setTimeout(() => {
+                networkController.prototype.classify();
+            },500);
         }, 800);
-        //networkController.prototype.classify();
     },
 
 })

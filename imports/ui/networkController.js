@@ -9,7 +9,7 @@ export default class networkController {
 
             // network options
             let options = {
-                numClasses: 2,
+                numClasses: NUM_CLASSES,
                 batchSize: images.length
             };
 
@@ -46,7 +46,7 @@ export default class networkController {
                 let label = image.substring(0, image.indexOf('-'));
 
                 // Instantiate new Image object
-                let img = `<img id="${image}" src="/images/train/${image}" title="${label}" class="margin-right-5">`;
+                let img = `<img id="${image}" src="/images/${FOLDER}/${image}" title="${label}" class="margin-right-5">`;
                 $("#containerImages").append(img);
 
                 let imageElement = document.getElementById(`${image}`);

@@ -105,6 +105,10 @@ Template.app.events({
 
     'change [id=fileUploaded]': function (e, tmpl) {
         if (e.currentTarget.files && e.currentTarget.files[0]) {
+            
+            console.log("carregando novos arquivos");
+            
+            $('#imageToPredict').attr('src', '');
 
             let reader = new FileReader();
 
@@ -132,7 +136,8 @@ Template.app.events({
                         zoomable: true
                     });
 
-                    $("#btnStartPredict").attr("disabled", false);
+                    $("#btnStartPredict").attr("disabled", false), $("#btnStartPredict").removeClass("hide");
+
                 }, 2000);
             };
 
@@ -152,6 +157,9 @@ Template.app.events({
 
         $('#imageToPredict').cropper('destroy');
         $('#imageToPredict').attr('src', '');
+
+        $("#btnStartPredict").addClass("hide");
+
         setTimeout(() => {
             $('#imageToPredict').attr('src', dataImage);
             $('#imageToPredict').css("width", "120").css("height", "120");

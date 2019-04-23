@@ -55,7 +55,7 @@ export default class networkController {
                     classifier.addImage(imageElement, label, () => {
                         instance.state.set('processingImage', `Adicionando imagem ${index + 1}: ${image}`);
                         index++;
-                        setTimeout(() => { addImage() }, 10);
+                        setTimeout(() => { addImage() }, 300);
                     });
                 };
             } else {

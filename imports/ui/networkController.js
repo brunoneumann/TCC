@@ -26,12 +26,6 @@ export default class networkController {
                     // Starting adding images
                     networkController.prototype.addImages(images, instance);
                 }, 2000);
-
-                // var img1 = new Image();
-                // img1.src = "/images/crestamento_bacteriano-1.png";
-                // img1.width = 224;
-                // img1.height = 224;
-                // classifier.addImage(img1, 'doencaA');
             };
         }
     };
@@ -55,7 +49,7 @@ export default class networkController {
                     classifier.addImage(imageElement, label, () => {
                         instance.state.set('processingImage', `Adicionando imagem ${index + 1}: ${image}`);
                         index++;
-                        setTimeout(() => { addImage() }, 300);
+                        setTimeout(() => { addImage() }, 20);
                     });
                 };
             } else {

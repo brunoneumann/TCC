@@ -10,7 +10,9 @@ export default class networkController {
             // network options
             let options = {
                 numClasses: NUM_CLASSES,
-                batchSize: images.length
+                batchSize: images.length,
+                epochs: 30,
+                hiddenUnits: 150
             };
 
             // Load MobileNet
@@ -49,7 +51,7 @@ export default class networkController {
                     classifier.addImage(imageElement, label, () => {
                         instance.state.set('processingImage', `Adicionando imagem ${index + 1}: ${image}`);
                         index++;
-                        setTimeout(() => { addImage() }, 20);
+                        setTimeout(() => { addImage() }, 15);
                     });
                 };
             } else {

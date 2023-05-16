@@ -1,3 +1,4 @@
 {
+  "installCommand": "npm install -g meteor",
   "buildCommand": "npm start"
 }

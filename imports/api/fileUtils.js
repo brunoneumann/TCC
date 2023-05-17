@@ -19,7 +19,6 @@ var _getAllFilesFromFolder = function(dir) {
     });
     return results;
 };
-console.log(_getAllFilesFromFolder(process.env.PWD));
 
 const fs = require("fs");
 const pathImages = `/app/bundle/programs/web.browser/app/images/${FOLDER}/`;

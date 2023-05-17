@@ -1,7 +1,7 @@
 import { Meteor } from "meteor/meteor";
 
 const fs = require("fs");
-const pathImages = `/images/${FOLDER}/`;
+const pathImages = `/programs/web.browser/app/images/${FOLDER}/`;
 
 if (Meteor.isServer) {
 

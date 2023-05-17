@@ -17,8 +17,8 @@
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
 - [x] Rodar localmente - http://localhost:3000/
-- [x] Rodar em núvem - https://mip-soja-tcc.meteorapp.com/
-- [ ] Banco de imagens na núvem
+- [x] Rodar em nuvem - https://mip-soja-tcc.meteorapp.com/
+- [ ] Banco de imagens na nuvem
 - [ ] Rodar em aplicativo on-line iOS
 - [ ] Rodar em aplicativo off-line iOS
 

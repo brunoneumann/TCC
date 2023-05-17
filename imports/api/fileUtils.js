@@ -4,7 +4,7 @@ var _getAllFilesFromFolder = function(dir) {
     var filesystem = require("fs");
     var results = [];
     filesystem.readdirSync(dir).forEach(function(file) {
-        if (!file.startsWith('.') && file !== 'node_modules') {
+        if (!file.startsWith('.') && file !== 'node_modules' && file !== 'server' && file !== 'package') {
         file = dir+'/'+file;
         var stat = filesystem.statSync(file);
 
@@ -22,7 +22,7 @@ var _getAllFilesFromFolder = function(dir) {
 console.log(_getAllFilesFromFolder(process.env.PWD));
 
 const fs = require("fs");
-const pathImages = `/bundle/programs/web.browser/app/images/${FOLDER}/`;
+const pathImages = `/app/bundle/programs/web.browser/app/images/${FOLDER}/`;
 
 if (Meteor.isServer) {
 
